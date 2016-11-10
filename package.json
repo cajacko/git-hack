@@ -1,0 +1,34 @@
+{
+  "name": "githack",
+  "version": "1.0.0",
+  "description": "Extendable git client",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cajacko/gitHack.git"
+  },
+  "keywords": [
+    "git",
+    "electron",
+    "nodejs",
+    "reactjs",
+    "react",
+    "node",
+    "javascript",
+    "desktop",
+    "application"
+  ],
+  "author": "Charlie Jackson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cajacko/gitHack/issues"
+  },
+  "homepage": "https://github.com/cajacko/gitHack#readme",
+  "dependencies": {
+    "electron": "^1.4.6"
+  }
+}
