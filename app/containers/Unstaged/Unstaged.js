@@ -1,65 +1,70 @@
 import React from 'react'
-import Unstaged from '~/components/Unstaged/Unstaged'
+import {getUnstagedFiles} from '~/actions/files'
+import {connect} from 'react-redux'
+import {stageAll, stageFile} from '~/actions/stage'
+import StageContainer from '~/components/StageContainer/StageContainer'
 
 class UnstagedContainer extends React.Component {
-  propsToState(props) {
-    const state = {
-      changed: props.changed,
-      deleted: props.deleted,
-      new: props.new
-    }
-
-    return state;
-  }
-
   constructor(props) {
-    super(props);
-    this.state = this.propsToState(this.props)
-    this.toggleCheckbox = this.toggleCheckbox.bind(this)
+    super(props)
+    this.checkFile = this.checkFile.bind(this)
+    this.stageAll = this.stageAll.bind(this)
+    this.returnFileObject = this.returnFileObject.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState(nextProps)
+  componentDidMount() {
+    this.props.dispatch(getUnstagedFiles())
   }
 
-  toggleCheckbox(key, value, checked) {
-    console.log('toggle', key, value, checked)
+  stageAll() {
+    this.props.dispatch(stageAll())
+  }
 
-    var thisObject = this
-    var finished = false
+  checkFile(fileName, status) {
+    this.props.dispatch(stageFile(fileName, status))
+  }
 
-    // this.state[key].forEach(function(file) {
-    //   if (finished) {
-    //     return false
-    //   }
+  returnFileObject(status) {
+    var files = []
 
-    //   console.log(file)
+    this.props[status].forEach(function(fileName) {
+      files.push({
+        fileName: fileName,
+        status: status,
+        checked: false
+      })
+    })
 
-    //   if (file == value) {
-    //     thisObject.setState({
-    //       [key]: {
-    //         [value]: 
-    //       }
-    //     })
-        
-    //     finished = true
-    //   }
-
-    // })
+    return files
   }
 
   render() {
-    var count = 0;
+    var files = (this.returnFileObject('new'))
+    files = files.concat(this.returnFileObject('changed'))
+    files = files.concat(this.returnFileObject('deleted'))
 
     return (
-      <Unstaged
-        new={this.state.new}
-        changed={this.state.changed}
-        deleted={this.state.deleted}
-        toggleCheckbox={this.toggleCheckbox}
+      <StageContainer
+        checkFile={this.checkFile}
+        loading={this.props.gettingUnstagedFiles}
+        error={this.props.getUnstagedFilesError}
+        files={files}
+        title="Unstaged"
+        buttonText="Stage All"
+        buttonAction={this.stageAll}
       />
     );
   }
 }
 
-export default UnstagedContainer
+function mapStateToProps(state) {
+  return {
+    new: state.unstagedNewFiles,
+    changed: state.unstagedChangedFiles,
+    deleted: state.unstagedDeletedFiles,
+    gettingUnstagedFiles: state.gettingUnstagedFiles,
+    getUnstagedFilesError: state.getUnstagedFilesError
+  }
+}
+
+export default connect(mapStateToProps)(UnstagedContainer)

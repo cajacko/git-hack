@@ -5,7 +5,7 @@
   "main": "bootstrap.js",
   "scripts": {
     "start": "electron .",
-    "test": "flow check --all"
+    "test": "flow check"
   },
   "repository": {
     "type": "git",

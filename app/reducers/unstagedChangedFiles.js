@@ -4,7 +4,7 @@ import * as fileTypes from '~/constants/fileTypes'
 
 export default function(state = [], action) {
   switch(action.type) {
-    case types.GOT_FILES:
+    case types.GOT_UNSTAGED_FILES:
       const files = ifFileTypeExists(fileTypes.CHANGED, action.payload)
 
       if (files) {

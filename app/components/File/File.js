@@ -1,19 +1,28 @@
 import React from 'react'
+import {style} from '~/components/File/File.style'
 
 class File extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
+    var status = false
+
+    if (this.props.status) {
+      status = <span style={style.status}>{this.props.status}</span>
+    }
+
     return (
       <li>
         <input 
           type="checkbox" 
-          checked={this.props.checked}
-          onChange={(event) => this.props.handleInput(this.props.status, this.props.fileName, event.target.checked)}
+          checked={false}
+          onChange={(event) => this.props.handleInput(this.props.fileName)}
         />
-        <span>{this.props.status}</span>
+
+        {status}
+
         <span>{this.props.fileName}</span>
       </li>
     )

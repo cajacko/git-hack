@@ -2,10 +2,11 @@ import * as types from '~/actions/actionTypes';
 
 export default function(state = false, action) {
   switch(action.type) {
-    case types.GOT_FILES:
+    case types.GOT_UNSTAGED_FILES:
+    case types.GET_UNSTAGED_FILES_ERROR:
       return false
 
-    case types.GET_FILES_ERROR:
+    case types.GETTING_UNSTAGED_FILES:
       return true
 
     default:

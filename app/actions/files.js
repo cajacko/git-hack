@@ -1,16 +1,15 @@
 import * as types from '~/actions/actionTypes';
-import {exec} from 'child_process'
 import parseFilesFromResponse from '~/helpers/formatting/parseFilesFromResponse'
 import * as fileTypes from '~/constants/fileTypes'
+import runGitCommand from '~/helpers/runGitCommand'
 
 function getFiles(command, callback) {
-  exec(command, function(error, stdout, stderr) {
+  runGitCommand(command, function(error, response) {
     if (error) {
-      callback(true, stderr)
-      return false
+      return callback(true)
     }
 
-    const files = parseFilesFromResponse(stdout)
+    const files = parseFilesFromResponse(response)
 
     if (files) {
       callback(null, files)
@@ -24,7 +23,7 @@ function getAllChanges(callback) {
   var allFiles = {}
   var doneCount = 0
 
-  getFiles('git ls-files -m', function(error, files) {
+  getFiles('ls-files -m', function(error, files) {
     if (error) {
       callback(error)
       doneCount = 1000
@@ -37,7 +36,7 @@ function getAllChanges(callback) {
       allFiles[file] = fileTypes.CHANGED
     })
 
-    getFiles('git ls-files -d', function(error, files) {
+    getFiles('ls-files -d', function(error, files) {
       if (error) {
         callback(error)
         doneCount = 1000
@@ -56,7 +55,7 @@ function getAllChanges(callback) {
     })
   })
 
-  getFiles('git ls-files --others --exclude-standard', function(error, files) {
+  getFiles('ls-files --others --exclude-standard', function(error, files) {
     if (error) {
       callback(error)
       doneCount = 1000
@@ -82,14 +81,14 @@ function getChangeArray(callback) {
       return false
     }
 
-    var fileObject = {}
+    var fileObject = {
+      [fileTypes.DELETED]: [],
+      [fileTypes.CHANGED]: [],
+      [fileTypes.NEW]: []
+    }
 
     for (var key in files) {
       if (files.hasOwnProperty(key)) {
-        if (!fileObject[files[key]]) {
-          fileObject[files[key]] = []
-        }
-
         fileObject[files[key]].push(key)
       } else {
         return callback(true)
@@ -103,20 +102,48 @@ function getChangeArray(callback) {
 export function getUnstagedFiles() {
   return dispatch => {
     dispatch({
-      type: types.GETTING_FILES
+      type: types.GETTING_UNSTAGED_FILES
     })
     
     getChangeArray(function(error, files) {
       if (error) {
         return dispatch({
-          type: types.GET_FILES_ERROR
+          type: types.GET_UNSTAGED_FILES_ERROR
         })
       }
 
       dispatch({
-        type: types.GOT_FILES,
+        type: types.GOT_UNSTAGED_FILES,
         payload: files
       })
     })
+  }
+}
+
+export function getStagedFiles() {
+  return dispatch => {
+    dispatch({
+      type: types.GETTING_STAGED_FILES
+    })
+
+    getFiles('diff --name-only --cached', function(error, files) {
+      if (error) {
+        return dispatch({
+          type: types.GET_STAGED_FILES_ERROR
+        })
+      }
+
+      dispatch({
+        type: types.GOT_STAGED_FILES,
+        payload: files
+      })
+    })
+  }
+}
+
+export function getStagedUnstagedFiles() {
+  return dispatch => {
+    dispatch(getStagedFiles())
+    dispatch(getUnstagedFiles())
   }
 }

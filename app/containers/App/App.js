@@ -1,48 +1,23 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import UnstagedContainer from '~/containers/Unstaged/Unstaged'
-import {Provider} from 'react-redux'
-import {getUnstagedFiles} from '~/actions/files'
 import {connect} from 'react-redux'
+import App from '~/components/App/App'
+import {getStagedUnstagedFiles} from '~/actions/files'
 
 class AppContainer extends React.Component {
   constructor(props) {
     super(props)
-  }
-
-  componentDidMount() {
-    this.props.dispatch(getUnstagedFiles())
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick() {
-    this.props.dispatch(getUnstagedFiles())
+    this.props.dispatch(getStagedUnstagedFiles())
   }
 
   render() {
-    var count = 0
-
     return (
-      <div>
-        <button
-          onClick={() => this.handleClick()}
-        >Refresh</button>
-
-        <UnstagedContainer 
-          new={this.props.newFiles}
-          changed={this.props.changedFiles}
-          deleted={this.props.deletedFiles}
-        />
-      </div>
+      <App handleClick={this.handleClick} />
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    newFiles: state.newFiles,
-    changedFiles: state.changedFiles,
-    deletedFiles: state.deletedFiles
-  }
-}
-
-export default connect(mapStateToProps)(AppContainer)
+export default connect()(AppContainer)
