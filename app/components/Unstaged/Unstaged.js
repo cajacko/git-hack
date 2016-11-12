@@ -1,5 +1,5 @@
 import React from 'react'
-import File from '../File/File'
+import File from '~/components/File/File'
 
 class Unstaged extends React.Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import Unstaged from '../../components/Unstaged/Unstaged'
+import Unstaged from '~/components/Unstaged/Unstaged'
 
 class UnstagedContainer extends React.Component {
   propsToState(props) {
@@ -14,11 +14,7 @@ class UnstagedContainer extends React.Component {
 
   constructor(props) {
     super(props);
-
-    console.log(props)
-
     this.state = this.propsToState(this.props)
-
     this.toggleCheckbox = this.toggleCheckbox.bind(this)
   }
 
@@ -49,12 +45,10 @@ class UnstagedContainer extends React.Component {
     //     finished = true
     //   }
 
-    })
+    // })
   }
 
   render() {
-    console.log('render container', this.props, this.state)
-
     var count = 0;
 
     return (

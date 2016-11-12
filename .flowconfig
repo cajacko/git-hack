@@ -1,0 +1,9 @@
+[ignore]
+.*/node_modules
+
+[include]
+
+[libs]
+
+[options]
+module.name_mapper='^~\/\(.*\)$' -> '<PROJECT_ROOT>/\1'
