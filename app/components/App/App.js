@@ -2,6 +2,7 @@ import React from 'react'
 import UnstagedContainer from '~/containers/Unstaged/Unstaged'
 import StagedContainer from '~/containers/Staged/Staged'
 import CommitFormContainer from '~/containers/CommitForm/CommitForm'
+import PreCommitContainer from '~/containers/PreCommit/PreCommit'
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +23,8 @@ class App extends React.Component {
         />
 
         <button onClick={this.props.openCommit}>Commit</button>
+
+        <PreCommitContainer />
 
         <CommitFormContainer />
       </div>
