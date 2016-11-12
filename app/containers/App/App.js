@@ -13,9 +13,16 @@ class AppContainer extends React.Component {
     this.props.dispatch(getStagedUnstagedFiles())
   }
 
+  openCommit() {
+    console.log('openCommit')
+  }
+  
   render() {
     return (
-      <App handleClick={this.handleClick} />
+      <App 
+        refresh={this.handleClick} 
+        openCommit={this.openCommit}
+      />
     )
   }
 }
