@@ -52,6 +52,7 @@ class UnstagedContainer extends React.Component {
         title="Unstaged"
         buttonText="Stage All"
         buttonAction={this.stageAll}
+        checked={false}
       />
     );
   }

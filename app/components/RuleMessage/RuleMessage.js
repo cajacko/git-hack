@@ -1,4 +1,7 @@
 import React from 'react'
+import Button from '~/components/Button/Button'
+import {style} from '~/components/RuleMessage/RuleMessage.style'
+import Text from '~/components/Text/Text'
 
 class RuleMessage extends React.Component {
   constructor(props) {
@@ -6,17 +9,32 @@ class RuleMessage extends React.Component {
   }
 
   render() {
-    var action = false
+    var confirm = false
 
     if (this.props.type == 'confirm') {
-      // action = <button onClick={this.props.confirm}>Confirm</button>
-      action = <button>Confirm</button>
+      var buttonType = false
+      var buttonText = 'Confirm'
+
+      if (this.props.validated) {
+        buttonType = 'grey'
+        buttonText = 'Unconfirm'
+      }
+
+      confirm = (
+        <Button 
+          onClick={() => this.props.confirmMessage(this.props.ruleIndex, this.props.messageIndex)}
+          buttonType={buttonType}
+          style={style.button}
+        >
+          {buttonText}
+        </Button>
+      )
     }
 
     return (
-      <li>
-        <span>{this.props.message}</span>
-        {action}
+      <li style={style.listItem}>
+        <Text style={style.message} text={this.props.message} />
+        {confirm}
       </li>
     )
   }

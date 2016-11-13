@@ -23,6 +23,7 @@ class FileList extends React.Component {
                 fileName={file.fileName} 
                 status={file.status} 
                 handleInput={props.checkFile} 
+                checked={props.checked}
               />
             )
           })

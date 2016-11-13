@@ -36,7 +36,7 @@ export const style = {
   },
 
   message: {
-    marginTop: GRID_SIZES.X2,
+    marginTop: GRID_SIZE,
     marginBottom: GRID_SIZES.X2,
     padding: GRID_SIZE,
     fontFamily: 'monospace',

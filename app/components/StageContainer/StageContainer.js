@@ -21,6 +21,7 @@ class StageContainer extends React.Component {
         <FileList 
           files={this.props.files} 
           checkFile={this.props.checkFile}
+          checked={this.props.checked}
         />
 
         <StageModal

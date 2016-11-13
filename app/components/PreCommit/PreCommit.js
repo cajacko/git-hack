@@ -1,5 +1,6 @@
 import React from 'react'
 import Rule from '~/components/Rule/Rule'
+import {style} from '~/components/PreCommit/PreCommit.style'
 
 class PreCommit extends React.Component {
   constructor(props) {
@@ -11,21 +12,24 @@ class PreCommit extends React.Component {
       return false
     }
 
-    var count = 0
+    var ruleIndex = -1
+    const props = this.props
 
     return (
-      <div>
-        <h2>PreCommit</h2>
-
+      <div style={style.container}>
         {
           this.props.rules.map(function(rule) {
-            count++
+            ruleIndex++
 
             return (
               <Rule 
-                key={count} 
+                key={ruleIndex} 
+                ruleIndex={ruleIndex}
                 messages={rule.messages} 
                 type={rule.type}
+                confirmMessage={props.confirmMessage}
+                confirmRule={props.confirmRule}
+                validated={rule.validated}
               />
             )
           })

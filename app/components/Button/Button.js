@@ -13,7 +13,13 @@ class Button extends React.Component {
   }
 
   render() {
-    const styles = combineStyles(style, this.props.style)
+    var styles = [style.button]
+
+    if (this.props.buttonType) {
+      styles.push(style.grey)
+    }
+    
+    styles = combineStyles(styles, this.props.style)
 
     var onClick = this.onClick
 
@@ -21,7 +27,14 @@ class Button extends React.Component {
       onClick = this.props.onClick
     }
 
-    return <button onClick={onClick} style={styles}>{this.props.children}</button>
+    return (
+      <button 
+        onClick={onClick} 
+        style={styles}
+      >
+        {this.props.children}
+      </button>
+    )
   }
 }
 

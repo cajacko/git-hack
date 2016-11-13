@@ -2,6 +2,7 @@ import React from 'react'
 import * as modalRoutes from '~/constants/modalRoutes'
 import {connect} from 'react-redux'
 import ModalCommit from '~/components/ModalCommit/ModalCommit'
+import ModalPreCommit from '~/components/ModalPreCommit/ModalPreCommit'
 
 class ModalContainer extends React.Component {
   constructor(props) {
@@ -17,15 +18,14 @@ class ModalContainer extends React.Component {
       return false
     }
 
-    var args = false
-
-    if (this.props.modal.args) {
-      args = this.props.modal.args
-    }
+    var args = this.props.modal.args
 
     switch(this.props.modal.type) {
       case modalRoutes.COMMIT:
-        return <ModalCommit {...args} />
+        return <ModalCommit wip={args} />
+
+      case modalRoutes.PRE_COMMIT:
+        return <ModalPreCommit rules={this.props.modal.args} />
 
       default:
         return false
@@ -35,7 +35,7 @@ class ModalContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    modal: state.modal,
+    modal: state.modal
   }
 }
 

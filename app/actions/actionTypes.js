@@ -19,3 +19,7 @@ export const STAGE_FILE = 'STAGE_FILE'
 
 export const SHOW_MODAL = 'SHOW_MODAL'
 export const HIDE_MODAL = 'HIDE_MODAL'
+
+// PreCommit
+
+// export const SHOW

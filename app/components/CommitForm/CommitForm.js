@@ -59,8 +59,12 @@ class CommitForm extends React.Component {
             />
           </div>
 
-          <div style={style.message}>
-            {message}
+          <div>
+            <Text style={style.label}text="Preview"/>
+
+            <div style={style.message}>
+              {message}
+            </div>
           </div>
         </div>
 

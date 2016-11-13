@@ -18,7 +18,7 @@ class File extends React.Component {
       <li style={style.file}>
         <input 
           type="checkbox" 
-          checked={false}
+          checked={this.props.checked}
           onChange={(event) => this.props.handleInput(this.props.fileName)}
         />
 

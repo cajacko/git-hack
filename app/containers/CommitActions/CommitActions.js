@@ -2,30 +2,38 @@ import React from 'react'
 import {connect} from 'react-redux'
 import CommitActions from '~/components/CommitActions/CommitActions'
 import {showModal} from '~/actions/modal'
+import {preCommit} from '~/actions/preCommit'
 import * as modalRoutes from '~/constants/modalRoutes'
 
 class CommitActionsContainer extends React.Component {
   constructor(props) {
     super(props)
     this.commitWip = this.commitWip.bind(this)
+    this.preCommit = this.preCommit.bind(this)
   }
 
-  validateCommit() {
-    console.log('validateCommit')
+  preCommit() {
+    this.props.dispatch(preCommit(this.props.stagedFiles))
   }
 
   commitWip() {
-    this.props.dispatch(showModal(modalRoutes.COMMIT, {wip: true}))
+    this.props.dispatch(showModal(modalRoutes.COMMIT, true))
   }
   
   render() {
     return (
       <CommitActions 
-        validateCommit={this.validateCommit} 
+        preCommit={this.preCommit} 
         commitWip={this.commitWip} 
       />
     )
   }
 }
 
-export default connect()(CommitActionsContainer)
+function mapStateToProps(state) {
+  return {
+    stagedFiles: state.stagedFiles
+  }
+}
+
+export default connect(mapStateToProps)(CommitActionsContainer)

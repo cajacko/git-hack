@@ -43,6 +43,7 @@ class StagedContainer extends React.Component {
         title="Staged"
         buttonText="Unstage All"
         buttonAction={this.unStageAll}
+        checked={true}
       />
     )
   }

@@ -10,7 +10,7 @@ class CommitActions extends React.Component {
   render() {
     return (
       <div style={style.container}>
-        <Button style={style.commit} onClick={this.props.validate}>Commit</Button>
+        <Button style={style.commit} onClick={this.props.preCommit}>Commit</Button>
         
         <div style={style.wipContainer}>
           <Button style={style.wipButton} onClick={this.props.commitWip}>Commit WIP</Button>
