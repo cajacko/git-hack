@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import {connect} from 'react-redux'
 import PreCommit from '~/components/PreCommit/PreCommit'
 import getGitHackConfigFile from '~/helpers/getGitHackConfigFile'

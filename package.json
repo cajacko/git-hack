@@ -5,7 +5,8 @@
   "main": "bootstrap.js",
   "scripts": {
     "start": "electron .",
-    "test": "flow check"
+    "test": "flow check",
+    "watch": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,8 @@
     "electron": "^1.4.6",
     "electron-reload": "^1.0.3",
     "html-to-react": "^1.2.2",
+    "json-loader": "^0.5.4",
+    "radium": "^0.18.1",
     "react": "^15.3.2",
     "react-addons-update": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -45,6 +48,9 @@
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
-    "flow-bin": "^0.35.0"
+    "babel-loader": "^6.2.7",
+    "flow-bin": "^0.35.0",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
   }
 }

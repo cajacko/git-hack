@@ -1,5 +1,6 @@
 import React from 'react'
 import {style} from '~/components/File/File.style'
+import Text from '~/components/Text/Text'
 
 class File extends React.Component {
   constructor(props) {
@@ -10,11 +11,11 @@ class File extends React.Component {
     var status = false
 
     if (this.props.status) {
-      status = <span style={style.status}>{this.props.status}</span>
+      status = <Text style={style.status} text={this.props.status} />
     }
 
     return (
-      <li>
+      <li style={style.file}>
         <input 
           type="checkbox" 
           checked={false}
@@ -23,7 +24,7 @@ class File extends React.Component {
 
         {status}
 
-        <span>{this.props.fileName}</span>
+        <Text style={style.fileName} text={this.props.fileName} />
       </li>
     )
   }

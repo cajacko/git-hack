@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import UnstagedContainer from '~/containers/Unstaged/Unstaged'
 import {Provider} from 'react-redux'
 import configureStore from '~/configureStore'
-import {exec} from 'child_process'
 import IndexRouter from '~/routers/index'
 
 const store = configureStore()

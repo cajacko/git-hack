@@ -3,13 +3,25 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+
+    <style>
+      html,
+      body,
+      #app {
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
   </head>
   <body>
     <div id="app">Hi Bean</div>
 
-    <script>
-      require('babel-register');
-      require('./app/app');
-    </script>
+    <script src="http://localhost:8080/webpack-dev-server.js"></script>
+    <script src="http://localhost:8080/built/bundle.js"></script>
   </body>
 </html>

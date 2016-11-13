@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import RuleMessage from '~/components/RuleMessage/RuleMessage'
 
 class Rule extends React.Component {

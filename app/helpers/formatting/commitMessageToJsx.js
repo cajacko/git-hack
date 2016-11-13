@@ -6,7 +6,7 @@ export default function(message) {
 
   html = html.replace(/(?:\r\n|\r|\n)/g, '<br />');
 
-  html = '<p>' + html + '</p>'
+  html = '<div>' + html + '</div>'
 
   const htmlToReactParser = new HtmlToReactParser()
   const jsx = htmlToReactParser.parse(html)

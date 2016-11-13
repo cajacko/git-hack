@@ -2,6 +2,7 @@ import React from 'react'
 import FileList from '~/components/FileList/FileList'
 import StageHeader from '~/components/StageHeader/StageHeader'
 import StageModal from '~/components/StageModal/StageModal'
+import {style} from '~/components/StageContainer/StageContainer.style'
 
 class StageContainer extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class StageContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={style.container}>
         <StageHeader
           title={this.props.title}
           buttonText={this.props.buttonText}

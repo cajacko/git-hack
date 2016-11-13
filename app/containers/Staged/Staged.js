@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import {getStagedFiles} from '~/actions/files'
 import {connect} from 'react-redux'
 import {unStageAll, unStageFile} from '~/actions/stage'

@@ -1,6 +1,10 @@
 export default function(args) {
   var message = '';
 
+  if (args.wip) {
+    message += '[WIP] '
+  }
+
   if (args.type && args.type.length) {
     message += args.type 
   } else {

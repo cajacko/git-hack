@@ -1,5 +1,5 @@
-import {exec} from 'child_process'
 import {GIT_DIR} from '~/constants/gitDir'
+const exec = window.require('child_process').exec
 
 export default function(gitCommand, callback) {
   var command = 'git -C '

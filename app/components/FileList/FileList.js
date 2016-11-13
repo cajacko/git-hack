@@ -1,5 +1,6 @@
 import React from 'react'
 import File from '~/components/File/File'
+import {style} from '~/components/FileList/FileList.style'
 
 class FileList extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class FileList extends React.Component {
     const props = this.props
 
     return (
-      <ul>
+      <ul style={style.list}>
         {
           this.props.files.map(function(file) {
             count++;

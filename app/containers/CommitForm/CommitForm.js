@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import CommitForm from '~/components/CommitForm/CommitForm'
 import {commit} from '~/actions/commit'
 import {connect} from 'react-redux'
@@ -9,17 +9,26 @@ class CommitFormContainer extends React.Component {
     super(props)
 
     var state = {
-      type: 'Commit Form',
-      summary: 'Added ability to save commit',
-      description: 'A description of some sort',
-      issueId: '34657907hfoihr90'
+      type: '',
+      summary: '',
+      description: '',
+      issueId: ''
     }
 
-    state.message = formatCommitMessage(state)
+    const messageArgs = this.getMessageArgs(state)
+    state.message = formatCommitMessage(messageArgs)
 
     this.state = state
     this.textInputChange = this.textInputChange.bind(this)
     this.saveCommit = this.saveCommit.bind(this)
+    this.getMessageArgs = this.getMessageArgs.bind(this)
+  }
+
+  getMessageArgs(state) {
+    var messageArgs = Object.assign({}, state);
+    messageArgs.wip = this.props.wip
+
+    return messageArgs
   }
 
   saveCommit(event) {
@@ -30,9 +39,10 @@ class CommitFormContainer extends React.Component {
 
   textInputChange(prop, value) {
     var state = Object.assign({}, this.state)
-
     state[prop] = value
-    state.message = formatCommitMessage(state)
+
+    const messageArgs = this.getMessageArgs(state)
+    state.message = formatCommitMessage(messageArgs)
 
     this.setState(state)
   }

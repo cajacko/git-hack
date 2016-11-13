@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import Rule from '~/components/Rule/Rule'
 
 class PreCommit extends React.Component {

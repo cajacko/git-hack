@@ -1,6 +1,6 @@
 import {GIT_DIR} from '~/constants/gitDir'
-import path from 'path'
-import fs from 'fs'
+const path = window.require('path')
+const fs = window.require('fs')
 
 export default function(callback) {
   try {

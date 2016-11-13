@@ -3,6 +3,9 @@ import UnstagedContainer from '~/containers/Unstaged/Unstaged'
 import StagedContainer from '~/containers/Staged/Staged'
 import CommitFormContainer from '~/containers/CommitForm/CommitForm'
 import PreCommitContainer from '~/containers/PreCommit/PreCommit'
+import CommitActionsContainer from '~/containers/CommitActions/CommitActions'
+import {style} from '~/components/App/App.style'
+import ModalContainer from '~/containers/Modal/Modal'
 
 class App extends React.Component {
   constructor(props) {
@@ -11,9 +14,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.props.refresh}>Refresh</button>
-
+      <div style={style.container}>
         <StagedContainer />
 
         <UnstagedContainer 
@@ -22,14 +23,15 @@ class App extends React.Component {
           deleted={this.props.deletedFiles}
         />
 
-        <button onClick={this.props.openCommit}>Commit</button>
+        <CommitActionsContainer />
 
-        <PreCommitContainer />
-
-        <CommitFormContainer />
+        <ModalContainer />
       </div>
     )
   }
 }
+
+// <PreCommitContainer />
+// <CommitFormContainer />
 
 export default App

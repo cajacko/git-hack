@@ -14,3 +14,8 @@ export const STAGE_ALL = 'STAGE_ALL'
 export const UNSTAGE_ALL = 'UNSTAGE_ALL'
 export const UNSTAGE_FILE = 'UNSTAGE_FILE'
 export const STAGE_FILE = 'STAGE_FILE'
+
+// Modal
+
+export const SHOW_MODAL = 'SHOW_MODAL'
+export const HIDE_MODAL = 'HIDE_MODAL'

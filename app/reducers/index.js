@@ -5,6 +5,7 @@ import unstagedDeletedFiles from '~/reducers/unstagedDeletedFiles'
 import gettingUnstagedFiles from '~/reducers/gettingUnstagedFiles'
 import getUnstagedFilesError from '~/reducers/getUnstagedFilesError'
 import stagedFiles from '~/reducers/stagedFiles'
+import modal from '~/reducers/modal'
 
 const app = combineReducers({
   unstagedNewFiles,
@@ -12,7 +13,8 @@ const app = combineReducers({
   unstagedDeletedFiles,
   gettingUnstagedFiles,
   getUnstagedFilesError,
-  stagedFiles
+  stagedFiles,
+  modal
 })
 
 export default app
