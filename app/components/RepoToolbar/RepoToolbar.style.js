@@ -11,5 +11,9 @@ export const style = {
     marginLeft: GRID_SIZE,
     paddingTop: '6px',
     display: 'block',
+  },
+
+  select: {
+    marginLeft: GRID_SIZE
   }
 }
