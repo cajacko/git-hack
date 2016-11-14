@@ -22,5 +22,11 @@ export const style = {
     fontSize: FONT_SIZES.LARGE,
     fontWeight: FONT_WEIGHTS.MEDIUM,
     lineHeight: LINE_HEIGHTS.NONE
+  },
+
+  status: {
+    marginRight: GRID_SIZE,
+    paddingTop: '10px',
+    fontSize: FONT_SIZES.SMALL,
   }
 }

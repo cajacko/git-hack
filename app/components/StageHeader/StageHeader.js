@@ -10,6 +10,20 @@ class StageHeader extends React.Component {
   }
 
   render() {
+    var status = false
+
+    if (!this.props.repo) {
+      status = "No valid git repo selected"
+    } else if (this.props.loading) {
+      // status = "Loading" // TODO: Better way of displaying loading? Maybe only when manually click?
+    } else if (this.props.error) {
+      status = "Error"
+    }
+
+    if (status) {
+      status = <Text style={style.status} text={status} />
+    }
+
     return (
       <header style={style.header}>
         <h2 style={style.title}>
@@ -18,6 +32,8 @@ class StageHeader extends React.Component {
             text={this.props.title} 
           />
         </h2>
+
+        {status}
 
         <Button 
           style={style.button} 

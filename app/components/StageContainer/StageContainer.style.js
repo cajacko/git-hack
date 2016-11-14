@@ -9,11 +9,5 @@ export const style = {
     borderColor: BORDER_LIGHT,
     display: 'flex',
     flexDirection: 'column'
-  },
-
-  wrap: {
-    flex: 1,
-    display: 'flex',
-    position: 'relative'
   }
 }

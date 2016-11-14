@@ -1,7 +1,6 @@
 import React from 'react'
 import FileList from '~/components/FileList/FileList'
 import StageHeader from '~/components/StageHeader/StageHeader'
-import StageModal from '~/components/StageModal/StageModal'
 import {style} from '~/components/StageContainer/StageContainer.style'
 
 class StageContainer extends React.Component {
@@ -16,21 +15,16 @@ class StageContainer extends React.Component {
           title={this.props.title}
           buttonText={this.props.buttonText}
           handleClick={this.props.buttonAction}
+          loading={this.props.loading}
+          error={this.props.error}
+          repo={this.props.repo}
         />
 
-        <div style={style.wrap}>
-          <FileList 
-            files={this.props.files} 
-            checkFile={this.props.checkFile}
-            checked={this.props.checked}
-          />
-
-          <StageModal
-            loading={this.props.loading}
-            error={this.props.error}
-            repo={this.props.repo}
-          />
-        </div>
+        <FileList 
+          files={this.props.files} 
+          checkFile={this.props.checkFile}
+          checked={this.props.checked}
+        />
       </div>
     );
   }
