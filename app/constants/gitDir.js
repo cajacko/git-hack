@@ -1,0 +1,1 @@
+export const GIT_DIR = '/Users/charlie/Documents/Code/Projects/dummy-repo'

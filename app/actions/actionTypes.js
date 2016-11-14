@@ -1,0 +1,25 @@
+// Files
+
+export const GETTING_UNSTAGED_FILES = 'GETTING_UNSTAGED_FILES'
+export const GET_UNSTAGED_FILES_ERROR = 'GET_UNSTAGED_FILES_ERROR'
+export const GOT_UNSTAGED_FILES = 'GOT_UNSTAGED_FILES'
+
+export const GETTING_STAGED_FILES = 'GETTING_STAGED_FILES'
+export const GET_STAGED_FILES_ERROR = 'GET_STAGED_FILES_ERROR'
+export const GOT_STAGED_FILES = 'GOT_STAGED_FILES'
+
+// Stage
+
+export const STAGE_ALL = 'STAGE_ALL'
+export const UNSTAGE_ALL = 'UNSTAGE_ALL'
+export const UNSTAGE_FILE = 'UNSTAGE_FILE'
+export const STAGE_FILE = 'STAGE_FILE'
+
+// Modal
+
+export const SHOW_MODAL = 'SHOW_MODAL'
+export const HIDE_MODAL = 'HIDE_MODAL'
+
+// PreCommit
+
+// export const SHOW

@@ -1,0 +1,56 @@
+{
+  "name": "githack",
+  "version": "1.0.0",
+  "description": "Extendable git client",
+  "main": "bootstrap.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "flow check",
+    "watch": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cajacko/gitHack.git"
+  },
+  "keywords": [
+    "git",
+    "electron",
+    "nodejs",
+    "reactjs",
+    "react",
+    "node",
+    "javascript",
+    "desktop",
+    "application"
+  ],
+  "author": "Charlie Jackson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cajacko/gitHack/issues"
+  },
+  "homepage": "https://github.com/cajacko/gitHack#readme",
+  "dependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "babel-root-import": "^4.1.3",
+    "electron": "^1.4.6",
+    "electron-reload": "^1.0.3",
+    "html-to-react": "^1.2.2",
+    "json-loader": "^0.5.4",
+    "radium": "^0.18.1",
+    "react": "^15.3.2",
+    "react-addons-update": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.7",
+    "flow-bin": "^0.35.0",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
