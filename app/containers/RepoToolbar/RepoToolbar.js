@@ -3,11 +3,13 @@ import {connect} from 'react-redux'
 import RepoToolbar from '~/components/RepoToolbar/RepoToolbar'
 const {dialog} = window.require('electron').remote
 import {changeRepo} from '~/actions/repo'
+import {getStagedUnstagedFiles} from '~/actions/files'
 
 class RepoToolbarContainer extends React.Component {
   constructor(props) {
     super(props)
     this.changeDir = this.changeDir.bind(this)
+    this.refresh = this.refresh.bind(this)
   }
 
   changeDir() {
@@ -24,11 +26,16 @@ class RepoToolbarContainer extends React.Component {
     })
   }
 
+  refresh() {
+    this.props.dispatch(getStagedUnstagedFiles(this.props.path))
+  }
+
   render() {
     return (
       <RepoToolbar
         path={this.props.path}
         changeDir={this.changeDir}
+        refresh={this.refresh}
       />
     )
   }

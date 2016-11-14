@@ -11,8 +11,9 @@ class RepoToolbar extends React.Component {
   render() {
     return (
       <div style={style.container}>
-        <Button onClick={this.props.changeDir} style={style.button}>Change Repo</Button>
+        <Button onClick={this.props.changeDir}>Change Repo</Button>
         <Text style={style.path} text={this.props.path} />
+        <Button onClick={this.props.refresh}>Refresh</Button>
       </div>
     )
   }

@@ -6,10 +6,6 @@ export const style = {
     padding: GRID_SIZE
   },
 
-  button: {
-    display: 'block'
-  },
-
   path: {
     flex: 1,
     marginLeft: GRID_SIZE,
