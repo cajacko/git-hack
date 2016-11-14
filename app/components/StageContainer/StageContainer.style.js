@@ -6,6 +6,14 @@ export const style = {
     flex: 1,
     borderStyle: BORDER_STYLE,
     borderWidth: BORDER_WIDTHS.THIN,
-    borderColor: BORDER_LIGHT
+    borderColor: BORDER_LIGHT,
+    display: 'flex',
+    flexDirection: 'column'
+  },
+
+  wrap: {
+    flex: 1,
+    display: 'flex',
+    position: 'relative'
   }
 }

@@ -1,4 +1,6 @@
 import React from 'react'
+import {style} from '~/components/StageModal/StageModal.style'
+import Text from '~/components/Text/Text'
 
 class StageModal extends React.Component {
   constructor(props) {
@@ -6,21 +8,21 @@ class StageModal extends React.Component {
   }
 
   render() {
-    var modal = false
+    var text = false
 
     if (!this.props.repo) {
-      modal = <div>No valid git repo selected</div>
+      text = <div>No valid git repo selected</div>
     } else if (this.props.loading) {
-      modal = <div>Loading</div>
+      text = <div>Loading</div>
     } else if (this.props.error) {
-      modal = <div>Error</div>
+      text = <div>Error</div>
     } else {
       return false
     }
 
     return (
-      <div>
-        {modal}
+      <div style={style.container}>
+        <Text text={text} />
       </div>
     );
   }

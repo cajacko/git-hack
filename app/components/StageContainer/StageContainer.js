@@ -18,17 +18,19 @@ class StageContainer extends React.Component {
           handleClick={this.props.buttonAction}
         />
 
-        <FileList 
-          files={this.props.files} 
-          checkFile={this.props.checkFile}
-          checked={this.props.checked}
-        />
+        <div style={style.wrap}>
+          <FileList 
+            files={this.props.files} 
+            checkFile={this.props.checkFile}
+            checked={this.props.checked}
+          />
 
-        <StageModal
-          loading={this.props.loading}
-          error={this.props.error}
-          repo={this.props.repo}
-        />
+          <StageModal
+            loading={this.props.loading}
+            error={this.props.error}
+            repo={this.props.repo}
+          />
+        </div>
       </div>
     );
   }
