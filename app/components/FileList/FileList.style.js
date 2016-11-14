@@ -3,7 +3,7 @@ export const style = {
     margin: 0,
     padding: 0,
     listStyle: 'none',
-    overflowY: 'scroll',
+    overflowY: 'auto',
     overflowX: 'hidden',
     flex: 1
   } 
