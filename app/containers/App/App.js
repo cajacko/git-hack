@@ -12,7 +12,9 @@ class AppContainer extends React.Component {
     const thisObject = this
 
     setInterval(function() {
-      thisObject.props.dispatch(getStagedUnstagedFiles(thisObject.props.repo))
+      if (thisObject.props.repo) {
+        thisObject.props.dispatch(getStagedUnstagedFiles(thisObject.props.repo))
+      }
     }, 3000)
   }
   
