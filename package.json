@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "test": "flow check",
-    "watch": "webpack-dev-server"
+    "watch": "webpack-dev-server --host 127.0.0.1 --port 5000"
   },
   "repository": {
     "type": "git",
