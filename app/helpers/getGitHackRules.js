@@ -5,9 +5,13 @@ export default function(gitDir, callback) {
   try {
     const configPath = gitDir + '/.gitHack'
 
-    fs.readFile(configPath, 'utf8', function (err,data) {
+    fs.readFile(configPath, 'utf8', function (err, data) {
       if (err) {
         callback(err)
+      }
+
+      if (!data) {
+        return callback(null, [])
       }
 
       const json = JSON.parse(data)

@@ -33,7 +33,6 @@ class CommitFormContainer extends React.Component {
 
   saveCommit(event) {
     event.preventDefault()
-    console.log(this.state.message)
     this.props.dispatch(commit(this.props.repo, this.state.message))
   }
 

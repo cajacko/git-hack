@@ -5,8 +5,6 @@ export default function(gitDir, gitCommand, callback) {
   command += gitDir + ' '
   command += gitCommand
 
-  console.log(command)
-
   exec(command, function(error, stdout, stderr) {
     if (error) {
       var errorMessage = 'Error running the command, no message given'
