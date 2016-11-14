@@ -1,10 +1,9 @@
-import {GIT_DIR} from '~/constants/gitDir'
 const path = window.require('path')
 const fs = window.require('fs')
 
-export default function(callback) {
+export default function(gitDir, callback) {
   try {
-    const configPath = GIT_DIR + '/.gitHack'
+    const configPath = gitDir + '/.gitHack'
 
     fs.readFile(configPath, 'utf8', function (err,data) {
       if (err) {

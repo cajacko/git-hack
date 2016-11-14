@@ -3,13 +3,13 @@ import getGitHackRules from '~/helpers/getGitHackRules'
 import getApplicableRules from '~/helpers/getApplicableRules'
 import * as modalRoutes from '~/constants/modalRoutes'
 
-export function preCommit(stagedFiles) {
+export function preCommit(gitDir, stagedFiles) {
   return dispatch => {
     dispatch({
       type: 'checking rules'
     })
 
-    getGitHackRules(function(err, rules) {
+    getGitHackRules(gitDir, function(err, rules) {
       if (err) {
         return dispatch({
           type: 'Error getting rules'

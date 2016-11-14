@@ -9,9 +9,10 @@ export default function(state = false, action) {
       }
 
     case types.HIDE_MODAL:
+    case types.COMMITTED:
       return false
       
     default:
-      return false
+      return state
   }
 }

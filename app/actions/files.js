@@ -3,8 +3,8 @@ import parseFilesFromResponse from '~/helpers/formatting/parseFilesFromResponse'
 import * as fileTypes from '~/constants/fileTypes'
 import runGitCommand from '~/helpers/runGitCommand'
 
-function getFiles(command, callback) {
-  runGitCommand(command, function(error, response) {
+function getFiles(gitDir, command, callback) {
+  runGitCommand(gitDir, command, function(error, response) {
     if (error) {
       return callback(true)
     }
@@ -19,11 +19,11 @@ function getFiles(command, callback) {
   })
 }
 
-function getAllChanges(callback) {
+function getAllChanges(gitDir, callback) {
   var allFiles = {}
   var doneCount = 0
 
-  getFiles('ls-files -m', function(error, files) {
+  getFiles(gitDir, 'ls-files -m', function(error, files) {
     if (error) {
       callback(error)
       doneCount = 1000
@@ -36,7 +36,7 @@ function getAllChanges(callback) {
       allFiles[file] = fileTypes.CHANGED
     })
 
-    getFiles('ls-files -d', function(error, files) {
+    getFiles(gitDir, 'ls-files -d', function(error, files) {
       if (error) {
         callback(error)
         doneCount = 1000
@@ -55,7 +55,7 @@ function getAllChanges(callback) {
     })
   })
 
-  getFiles('ls-files --others --exclude-standard', function(error, files) {
+  getFiles(gitDir, 'ls-files --others --exclude-standard', function(error, files) {
     if (error) {
       callback(error)
       doneCount = 1000
@@ -74,8 +74,8 @@ function getAllChanges(callback) {
   })
 }
 
-function getChangeArray(callback) {
-  getAllChanges(function(error, files) {
+function getChangeArray(gitDir, callback) {
+  getAllChanges(gitDir, function(error, files) {
     if (error) {
       callback(error)
       return false
@@ -99,13 +99,13 @@ function getChangeArray(callback) {
   })
 }
 
-export function getUnstagedFiles() {
+export function getUnstagedFiles(gitDir) {
   return dispatch => {
     dispatch({
       type: types.GETTING_UNSTAGED_FILES
     })
     
-    getChangeArray(function(error, files) {
+    getChangeArray(gitDir, function(error, files) {
       if (error) {
         return dispatch({
           type: types.GET_UNSTAGED_FILES_ERROR
@@ -120,13 +120,13 @@ export function getUnstagedFiles() {
   }
 }
 
-export function getStagedFiles() {
+export function getStagedFiles(gitDir) {
   return dispatch => {
     dispatch({
       type: types.GETTING_STAGED_FILES
     })
 
-    getFiles('diff --name-only --cached', function(error, files) {
+    getFiles(gitDir, 'diff --name-only --cached', function(error, files) {
       if (error) {
         return dispatch({
           type: types.GET_STAGED_FILES_ERROR
@@ -141,9 +141,9 @@ export function getStagedFiles() {
   }
 }
 
-export function getStagedUnstagedFiles() {
+export function getStagedUnstagedFiles(gitDir) {
   return dispatch => {
-    dispatch(getStagedFiles())
-    dispatch(getUnstagedFiles())
+    dispatch(getStagedFiles(gitDir))
+    dispatch(getUnstagedFiles(gitDir))
   }
 }

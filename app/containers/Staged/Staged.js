@@ -12,15 +12,15 @@ class StagedContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getStagedFiles())
+    this.props.dispatch(getStagedFiles(this.props.repo))
   }
 
   unStageAll() {
-    this.props.dispatch(unStageAll())
+    this.props.dispatch(unStageAll(this.props.repo))
   }
 
   checkFile(fileName) {
-    this.props.dispatch(unStageFile(fileName))
+    this.props.dispatch(unStageFile(this.props.repo, fileName))
   }
 
   render() {
@@ -53,7 +53,8 @@ function mapStateToProps(state) {
   return {
     stagedFiles: state.stagedFiles,
     gettingStagedFiles: state.gettingUnstagedFiles,
-    getStagedFilesError: state.getUnstagedFilesError
+    getStagedFilesError: state.getUnstagedFilesError,
+    repo: state.repo
   }
 }
 

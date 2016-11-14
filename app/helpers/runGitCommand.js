@@ -1,10 +1,11 @@
-import {GIT_DIR} from '~/constants/gitDir'
 const exec = window.require('child_process').exec
 
-export default function(gitCommand, callback) {
+export default function(gitDir, gitCommand, callback) {
   var command = 'git -C '
-  command += GIT_DIR + ' '
+  command += gitDir + ' '
   command += gitCommand
+
+  console.log(command)
 
   exec(command, function(error, stdout, stderr) {
     if (error) {

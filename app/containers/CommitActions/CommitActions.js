@@ -13,7 +13,7 @@ class CommitActionsContainer extends React.Component {
   }
 
   preCommit() {
-    this.props.dispatch(preCommit(this.props.stagedFiles))
+    this.props.dispatch(preCommit(this.props.repo, this.props.stagedFiles))
   }
 
   commitWip() {
@@ -32,7 +32,8 @@ class CommitActionsContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    stagedFiles: state.stagedFiles
+    stagedFiles: state.stagedFiles,
+    repo: state.repo
   }
 }
 

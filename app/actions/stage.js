@@ -2,7 +2,7 @@ import * as types from '~/actions/actionTypes'
 import runGitCommand from '~/helpers/runGitCommand'
 import {getStagedUnstagedFiles} from '~/actions/files'
 
-function stageUnstage(args) {
+function stageUnstage(gitDir, args) {
   return dispatch => {
     dispatch({
       type: args.getting,
@@ -15,7 +15,7 @@ function stageUnstage(args) {
       command += ' ' + args.fileName
     }
 
-    runGitCommand(command, function(error, response) {
+    runGitCommand(gitDir, command, function(error, response) {
       if (error) {
         return dispatch({
           type: args.error,
@@ -31,13 +31,13 @@ function stageUnstage(args) {
         payload: args.fileName
       })
 
-      dispatch(getStagedUnstagedFiles())
+      dispatch(getStagedUnstagedFiles(gitDir))
     })
   }
 }
 
-export function stageAll() {
-  return stageUnstage({
+export function stageAll(gitDir) {
+  return stageUnstage(gitDir, {
     fileName: false,
     getting: 'STAGING_ALL_FILES',
     command: 'add -A',
@@ -46,8 +46,8 @@ export function stageAll() {
   })
 }
 
-export function unStageAll() {
-  return stageUnstage({
+export function unStageAll(gitDir) {
+  return stageUnstage(gitDir, {
     fileName: false,
     getting: 'UNSTAGING_ALL_FILES',
     command: 'reset HEAD -- .',
@@ -56,8 +56,8 @@ export function unStageAll() {
   })
 }
 
-export function unStageFile(fileName) {
-  return stageUnstage({
+export function unStageFile(gitDir, fileName) {
+  return stageUnstage(gitDir, {
     fileName: fileName,
     getting: 'UNSTAGING_FILE',
     command: 'reset --',
@@ -66,8 +66,8 @@ export function unStageFile(fileName) {
   })
 }
 
-export function stageFile(fileName) {
-  return stageUnstage({
+export function stageFile(gitDir, fileName) {
+  return stageUnstage(gitDir, {
     fileName: fileName,
     getting: 'STAGING_FILE',
     command: 'add',
