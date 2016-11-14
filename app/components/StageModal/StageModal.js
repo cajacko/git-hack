@@ -8,7 +8,9 @@ class StageModal extends React.Component {
   render() {
     var modal = false
 
-    if (this.props.loading) {
+    if (!this.props.repo) {
+      modal = <div>No valid git repo selected</div>
+    } else if (this.props.loading) {
       modal = <div>Loading</div>
     } else if (this.props.error) {
       modal = <div>Error</div>
