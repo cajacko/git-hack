@@ -27,6 +27,7 @@ class StageContainer extends React.Component {
         <StageModal
           loading={this.props.loading}
           error={this.props.error}
+          repo={this.props.repo}
         />
       </div>
     );

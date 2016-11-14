@@ -34,7 +34,7 @@ class CommitFormContainer extends React.Component {
   saveCommit(event) {
     event.preventDefault()
     console.log(this.state.message)
-    this.props.dispatch(commit(this.state.message))
+    this.props.dispatch(commit(this.props.repo, this.state.message))
   }
 
   textInputChange(prop, value) {
@@ -62,4 +62,10 @@ class CommitFormContainer extends React.Component {
   }
 }
 
-export default connect()(CommitFormContainer)
+function mapStateToProps(state) {
+  return {
+    repo: state.repo
+  }
+}
+
+export default connect(mapStateToProps)(CommitFormContainer)

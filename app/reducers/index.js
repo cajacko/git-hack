@@ -6,6 +6,7 @@ import gettingUnstagedFiles from '~/reducers/gettingUnstagedFiles'
 import getUnstagedFilesError from '~/reducers/getUnstagedFilesError'
 import stagedFiles from '~/reducers/stagedFiles'
 import modal from '~/reducers/modal'
+import repo from '~/reducers/repo'
 
 const app = combineReducers({
   unstagedNewFiles,
@@ -14,7 +15,8 @@ const app = combineReducers({
   gettingUnstagedFiles,
   getUnstagedFilesError,
   stagedFiles,
-  modal
+  modal,
+  repo
 })
 
 export default app

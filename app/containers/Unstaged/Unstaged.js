@@ -13,15 +13,15 @@ class UnstagedContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getUnstagedFiles())
+    this.props.dispatch(getUnstagedFiles(this.props.repo))
   }
 
   stageAll() {
-    this.props.dispatch(stageAll())
+    this.props.dispatch(stageAll(this.props.repo))
   }
 
   checkFile(fileName, status) {
-    this.props.dispatch(stageFile(fileName, status))
+    this.props.dispatch(stageFile(this.props.repo, fileName, status))
   }
 
   returnFileObject(status) {
@@ -53,6 +53,7 @@ class UnstagedContainer extends React.Component {
         buttonText="Stage All"
         buttonAction={this.stageAll}
         checked={false}
+        repo={this.props.repo}
       />
     );
   }
@@ -64,7 +65,8 @@ function mapStateToProps(state) {
     changed: state.unstagedChangedFiles,
     deleted: state.unstagedDeletedFiles,
     gettingUnstagedFiles: state.gettingUnstagedFiles,
-    getUnstagedFilesError: state.getUnstagedFilesError
+    getUnstagedFilesError: state.getUnstagedFilesError,
+    repo: state.repo
   }
 }
 

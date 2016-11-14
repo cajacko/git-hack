@@ -23,3 +23,13 @@ export const HIDE_MODAL = 'HIDE_MODAL'
 // PreCommit
 
 // export const SHOW
+
+// Repo
+
+export const CHANGE_REPO = 'CHANGE_REPO'
+
+// Commit
+
+export const COMMITTING = 'COMMITTING'
+export const COMMIT_ERROR = 'COMMIT_ERROR'
+export const COMMITTED = 'COMMITTED'

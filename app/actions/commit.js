@@ -2,19 +2,19 @@ import * as types from '~/actions/actionTypes'
 import runGitCommand from '~/helpers/runGitCommand'
 import {getStagedUnstagedFiles} from '~/actions/files'
 
-export function commit(message) {
+export function commit(gitDir, message) {
   return dispatch => {
     dispatch({
-      type: 'COMMITTING',
+      type: types.COMMITTING,
       payload: message
     })
 
     const command = 'commit -m"' + message + '"' //TODO: escape any other ""
 
-    runGitCommand(command, function(error, response) {
+    runGitCommand(gitDir, command, function(error, response) {
       if (error) {
         return dispatch({
-          type: 'COMMITT_ERROR',
+          type: types.COMMIT_ERROR,
           payload: {
             error: error,
             message: message
@@ -23,11 +23,11 @@ export function commit(message) {
       }
 
       dispatch({
-        type: 'COMMITTED',
+        type: types.COMMITTED,
         payload: message
       })
 
-      dispatch(getStagedUnstagedFiles())
+      dispatch(getStagedUnstagedFiles(gitDir))
     })
   }
 }
