@@ -8,6 +8,8 @@ import stagedFiles from '~/reducers/stagedFiles'
 import modal from '~/reducers/modal'
 import repo from '~/reducers/repo'
 import repos from '~/reducers/repos'
+import fileDiff from '~/reducers/fileDiff'
+import selectedFile from '~/reducers/selectedFile'
 
 const app = combineReducers({
   unstagedNewFiles,
@@ -18,7 +20,9 @@ const app = combineReducers({
   stagedFiles,
   modal,
   repo,
-  repos
+  repos,
+  fileDiff,
+  selectedFile
 })
 
 export default app

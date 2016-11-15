@@ -32,7 +32,6 @@ class RepoToolbarContainer extends React.Component {
   }
 
   changeRepo(event) {
-    console.log('change', event.target.value)
     this.props.dispatch(changeRepo(event.target.value))
   }
 

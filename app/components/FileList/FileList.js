@@ -1,5 +1,5 @@
 import React from 'react'
-import File from '~/components/File/File'
+import File from '~/containers/File/File'
 import {style} from '~/components/FileList/FileList.style'
 
 class FileList extends React.Component {

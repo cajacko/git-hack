@@ -33,3 +33,9 @@ export const CHANGE_REPO = 'CHANGE_REPO'
 export const COMMITTING = 'COMMITTING'
 export const COMMIT_ERROR = 'COMMIT_ERROR'
 export const COMMITTED = 'COMMITTED'
+
+// Selected Files
+
+export const GET_FILE_DIFF = 'GET_FILE_DIFF'
+export const GOT_FILE_DIFF = 'GOT_FILE_DIFF'
+export const SELECT_FILE = 'SELECT_FILE'

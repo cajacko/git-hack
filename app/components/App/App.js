@@ -7,6 +7,7 @@ import CommitActionsContainer from '~/containers/CommitActions/CommitActions'
 import {style} from '~/components/App/App.style'
 import ModalContainer from '~/containers/Modal/Modal'
 import RepoToolbar from '~/containers/RepoToolbar/RepoToolbar'
+import FileDiffContainer from '~/containers/FileDiff/FileDiff'
 
 class App extends React.Component {
   constructor(props) {
@@ -18,15 +19,21 @@ class App extends React.Component {
       <div style={style.container}>
         <RepoToolbar />
 
-        <StagedContainer />
+        <div style={style.wrap}>
+          <div style={style.stageContainers}>
+            <StagedContainer />
 
-        <UnstagedContainer 
-          new={this.props.newFiles}
-          changed={this.props.changedFiles}
-          deleted={this.props.deletedFiles}
-        />
+            <UnstagedContainer 
+              new={this.props.newFiles}
+              changed={this.props.changedFiles}
+              deleted={this.props.deletedFiles}
+            />
 
-        <CommitActionsContainer />
+            <CommitActionsContainer />
+          </div>
+
+          <FileDiffContainer />
+        </div>
 
         <ModalContainer />
       </div>
