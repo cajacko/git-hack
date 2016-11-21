@@ -7,6 +7,7 @@
     "start": "electron .",
     "test": "flow check",
     "watch": "webpack-dev-server --host 127.0.0.1 --port 5000"
+    "dev": "multi \"npm start\" \"npm run watch\""
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
   "devDependencies": {
     "babel-loader": "^6.2.7",
     "flow-bin": "^0.35.0",
+    "multi-commands": "1.0.0",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   }
