@@ -9,5 +9,8 @@ export const BUTTON_BACKGROUND_HOVER = '#1565C0'
 export const BUTTON_BACKGROUND_GREY = 'grey'
 export const BUTTON_BACKGROUND_GREY_HOVER = 'black'
 
-export const RED_LIGHT = '#ffcdcd'
-export const GREEN_LIGHT = '#d6f3d6'
+export const RED_LIGHTER = '#ffcdcd'
+export const RED_LIGHT = '#ffb2b2'
+
+export const GREEN_LIGHTER = '#d6f3d6'
+export const GREEN_LIGHT = '#caefca'

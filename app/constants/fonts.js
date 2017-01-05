@@ -10,9 +10,9 @@ export const LINE_HEIGHTS = {
 }
 
 export const FONT_SIZES = {
-  SMALL: '12px',
-  MEDIUM: '16px',
-  LARGE: '20px'
+  SMALL: 12,
+  MEDIUM: 16,
+  LARGE: 20
 }
 
 export const FONT_WEIGHTS = {

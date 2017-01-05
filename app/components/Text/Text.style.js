@@ -1,8 +1,8 @@
 import {
-  FONT_FAMILY, 
-  FONT_SIZES, 
-  FONT_WEIGHTS, 
-  FONT_COLOURS, 
+  FONT_FAMILY,
+  FONT_SIZES,
+  FONT_WEIGHTS,
+  FONT_COLOURS,
   LINE_HEIGHTS
 } from '~/constants/fonts'
 
