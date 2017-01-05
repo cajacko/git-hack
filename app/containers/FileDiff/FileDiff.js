@@ -20,7 +20,7 @@ class FileDiffContainer extends React.Component {
   }
 
   render() {
-    return <FileDiff message={this.props.fileDiff}/>
+    return <FileDiff hunks={this.props.fileDiff}/>
   }
 }
 
