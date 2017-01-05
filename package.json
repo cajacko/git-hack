@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron .",
     "test": "flow check",
-    "watch": "webpack-dev-server --host 127.0.0.1 --port 5000"
+    "features": "electron-cucumber",
+    "watch": "webpack-dev-server --host 127.0.0.1 --port 5000",
     "dev": "multi \"npm start\" \"npm run watch\""
   },
   "repository": {
@@ -52,8 +53,9 @@
   },
   "devDependencies": {
     "babel-loader": "^6.2.7",
+    "electron-cucumber": "^0.1.0",
     "flow-bin": "^0.35.0",
-    "multi-commands": "1.0.0",
+    "multi-commands": "1.1.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   }
